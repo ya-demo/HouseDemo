@@ -1,6 +1,6 @@
 ﻿namespace HouseDemo.Core.Service;
 
-public class HouseService
+public class HouseService : IHouseService
 {
     private readonly IHouseRepository _houseRepository;
 
@@ -48,7 +48,7 @@ public class HouseService
             MaxFloor = request.MaxFloor,
             TotalFloor = request.TotalFloor,
             Rooms = request.Rooms,
-            LivinigRooms = request.LivinigRooms,
+            LivingRooms = request.LivingRooms,
             Bathrooms = request.Bathrooms,
             HasBalcony = request.HasBalcony,
             MainSpace = request.MainSpace,

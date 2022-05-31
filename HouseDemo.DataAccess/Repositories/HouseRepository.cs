@@ -15,7 +15,7 @@ public class HouseRepository : IHouseRepository
 
     public async Task AddHouse(House house)
     {
-        var sql = @"INSERT INTO House(HouseId, HouseName, Address, Description , Price, DiscountRate, HouseType, Years, MinFloor, MaxFloor, TotalFloor, Rooms, LivingRooms, Bathrooms, HasBalcony, LandSpace, MainSpace, BuildingSpace, ParkingSpace, CreatedTime, CreatedUser, UpdatedTime, UpdatedUser)
+        var sql = @"INSERT INTO Houses(HouseId, HouseName, Address, Description , Price, DiscountRate, HouseType, Years, MinFloor, MaxFloor, TotalFloor, Rooms, LivingRooms, Bathrooms, HasBalcony, LandSpace, MainSpace, BuildingSpace, ParkingSpace, CreatedTime, CreatedUser, UpdatedTime, UpdatedUser)
             VALUES(@HouseId, @HouseName, @Address, @Description , @Price, @DiscountRate, @HouseType, @Years, @MinFloor, @MaxFloor, @TotalFloor, @Rooms, @LivingRooms, @Bathrooms, @HasBalcony, @LandSpace, @MainSpace, @BuildingSpace, @ParkingSpace, @CreatedTime, @CreatedUser, @UpdatedTime, @UpdatedUser)";
         using (var conn = new SqlConnection(_configuration.GetSection("ConnectionStrings")["MsSql"]))
         {

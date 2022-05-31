@@ -8,9 +8,11 @@
 
   <ItemGroup>
     <None Remove="Service\" />
+    <None Remove="Service\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Service\" />
+    <Folder Include="Service\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HouseDemo.DataAccess\HouseDemo.DataAccess.csproj" />

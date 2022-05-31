@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HouseDemo.DataAccess.Models;
 
-public class HouseBase : BaseColumn
+public class HouseBase
 {
     [Required]
     [Column(TypeName = "varchar(20)")]
@@ -55,7 +55,7 @@ public class HouseBase : BaseColumn
 
     [Required]
     [Comment("廳數")]
-    public int LivinigRooms { get; set; }
+    public int LivingRooms { get; set; }
 
     [Required]
     [Comment("衛浴數")]

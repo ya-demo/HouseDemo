@@ -22,7 +22,7 @@ public class HouseServiceTests
             MaxFloor = 6,
             TotalFloor = 29,
             Rooms = 2,
-            LivinigRooms = 1,
+            LivingRooms = 1,
             Bathrooms = 1,
             HasBalcony = true,
             MainSpace = 21.76f,
@@ -60,7 +60,7 @@ public class HouseServiceTests
         Assert.Equal(_request.MaxFloor, result.MaxFloor);
         Assert.Equal(_request.TotalFloor, result.TotalFloor);
         Assert.Equal(_request.Rooms, result.Rooms);
-        Assert.Equal(_request.LivinigRooms, result.LivinigRooms);
+        Assert.Equal(_request.LivingRooms, result.LivingRooms);
         Assert.Equal(_request.Bathrooms, result.Bathrooms);
         Assert.Equal(_request.HasBalcony, result.HasBalcony);
         Assert.Equal(_request.MainSpace, result.MainSpace);
@@ -96,7 +96,7 @@ public class HouseServiceTests
         Assert.Equal(_request.MaxFloor, savedHouse.MaxFloor);
         Assert.Equal(_request.TotalFloor, savedHouse.TotalFloor);
         Assert.Equal(_request.Rooms, savedHouse.Rooms);
-        Assert.Equal(_request.LivinigRooms, savedHouse.LivinigRooms);
+        Assert.Equal(_request.LivingRooms, savedHouse.LivingRooms);
         Assert.Equal(_request.Bathrooms, savedHouse.Bathrooms);
         Assert.Equal(_request.HasBalcony, savedHouse.HasBalcony);
         Assert.Equal(_request.MainSpace, savedHouse.MainSpace);
