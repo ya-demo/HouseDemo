@@ -44,10 +44,8 @@ public class HouseServiceTests
     [Fact]
     public async Task AddHouseShouldReturnHouseResultWithRequestValues()
     {
-        // Act
         HouseResult result = await _service.AddHouse(_request);
         
-        // Assert
         Assert.NotNull(result);
         Assert.Equal(_request.HouseName, result.HouseName);
         Assert.Equal(_request.Address, result.Address);
@@ -79,11 +77,9 @@ public class HouseServiceTests
              savedHouse = house;
           });
 
-        // Act
         await _service.AddHouse(_request);
         _houseRepositoryMock.Verify(x => x.AddHouse(It.IsAny<House>()), Times.Once);
 
-        // Assert
         Assert.NotNull(savedHouse);
         Assert.Equal(_request.HouseName, savedHouse.HouseName);
         Assert.Equal(_request.Address, savedHouse.Address);
@@ -108,7 +104,7 @@ public class HouseServiceTests
     [Theory]
     [InlineData("ea3881d8-7cf7-45ba-b930-d915f6f08fd0", "test1")]
     [InlineData("1f85ccc2-6572-4840-8deb-260e8635762c", "test2")]
-    public async Task ShouldReturnExpectedDeskBookingId(
+    public async Task AddHouseShouldReturnExpectedHouseIdAndUserAndUpdatedTime(
         Guid houseId, string user)
     {
         House savedHouse = null;
