@@ -1,9 +1,42 @@
 ﻿namespace HouseDemo.Core.Service;
+
 public class HouseService
 {
-    public HouseResult AddHouse(HouseRequest request)
+    private readonly IHouseRepository _houseRepository;
+
+    public HouseService(IHouseRepository houseRepository) {
+        _houseRepository = houseRepository;
+    }
+
+    public async Task<HouseResult> AddHouse(HouseRequest request)
     {
-        return new HouseResult {
+        if (request == null)
+            throw new ArgumentNullException(nameof(request));
+
+        var now = DateTime.UtcNow;
+
+        var house = Create<House>(request);
+        house.HouseId = Guid.NewGuid();
+        house.CreatedUser = "Sys";
+        house.CreatedTime = now;
+        house.UpdatedUser = "Sys";
+        house.UpdatedTime = now;
+        await _houseRepository.AddHouse(house);
+
+        var result = Create<HouseResult>(request);
+        result.HouseId = house.HouseId;
+        result.CreatedUser = house.CreatedUser;
+        result.CreatedTime = house.CreatedTime;
+        result.UpdatedUser = house.UpdatedUser;
+        result.UpdatedTime = house.UpdatedTime;
+
+        return result;
+    }
+
+    private static T Create<T>(HouseRequest request) where T : HouseBase, new()
+    {
+        return new T
+        {
             HouseName = request.HouseName,
             Address = request.Address,
             Description = request.Description,

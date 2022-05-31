@@ -6,3 +6,4 @@ global using System.Linq;
 global using HouseDemo.Core.Service;
 global using HouseDemo.DataAccess.Models;
 global using HouseDemo.DataAccess.Enums;
+global using HouseDemo.DataAccess.Repositories.Interfaces;
