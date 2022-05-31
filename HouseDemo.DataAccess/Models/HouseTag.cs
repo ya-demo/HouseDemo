@@ -1,6 +1,16 @@
-﻿namespace HouseDemo.DataAccess.Models;
+﻿
+
+
+namespace HouseDemo.DataAccess.Models;
 public class HouseTag
 {
-    public Guid TagId { get; set; }
-    public string TageName { get; set; }
+    [Key]
+    public Guid HouseTagId { get; set; }
+
+    public Guid FkHouseId { get; set; }
+    public House House { get; set; }
+
+    public Guid FkTagId { get; set; }
+    public Tag Tag { get; set; }
 }
+
