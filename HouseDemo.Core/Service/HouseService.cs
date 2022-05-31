@@ -1,4 +1,6 @@
-﻿namespace HouseDemo.Core.Service;
+﻿using HouseDemo.Common.PageExtention;
+
+namespace HouseDemo.Core.Service;
 
 public class HouseService : IHouseService
 {
@@ -6,6 +8,17 @@ public class HouseService : IHouseService
 
     public HouseService(IHouseRepository houseRepository) {
         _houseRepository = houseRepository;
+    }
+
+
+    public Task<PageResult<HouseResult>> GetHouses(HouseQueryRequest request)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<HouseResult> GetHouse(Guid id)
+    {
+        throw new NotImplementedException();
     }
 
     public async Task<HouseResult> AddHouse(HouseRequest request)
@@ -31,6 +44,16 @@ public class HouseService : IHouseService
         result.UpdatedTime = house.UpdatedTime;
 
         return result;
+    }
+
+    public Task<HouseResult> UpdateHouse(Guid id, HouseRequest request)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task DeleteHouse(Guid id)
+    {
+        throw new NotImplementedException();
     }
 
     private static T Create<T>(HouseRequest request) where T : HouseBase, new()

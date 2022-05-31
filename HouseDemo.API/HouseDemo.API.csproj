@@ -17,5 +17,8 @@
     <ProjectReference Include="..\HouseDemo.DataAccess\HouseDemo.DataAccess.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+    <ProjectReference Include="..\HouseDemo.Common\HouseDemo.Common.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
   </ItemGroup>
 </Project>

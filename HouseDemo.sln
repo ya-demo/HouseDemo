@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseDemo.DataAccess", "Hou
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseDemo.API", "HouseDemo.API\HouseDemo.API.csproj", "{D644DFDB-20C6-466F-B31B-861B162FB2DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseDemo.Common", "HouseDemo.Common\HouseDemo.Common.csproj", "{F73355D8-61C5-4B4C-A083-19F99A4AFF69}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D644DFDB-20C6-466F-B31B-861B162FB2DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D644DFDB-20C6-466F-B31B-861B162FB2DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D644DFDB-20C6-466F-B31B-861B162FB2DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F73355D8-61C5-4B4C-A083-19F99A4AFF69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F73355D8-61C5-4B4C-A083-19F99A4AFF69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F73355D8-61C5-4B4C-A083-19F99A4AFF69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F73355D8-61C5-4B4C-A083-19F99A4AFF69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
