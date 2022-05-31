@@ -63,5 +63,32 @@ public class HouseRepository : IHouseRepository
         }
     }
 
+    public async Task UpdateHouse(House house)
+    {
+        var sql = @"UPDATE Houses
+                    SET HouseName = @HouseName, Address = @Address, Description = @Description,
+                        Price = @Price, DiscountRate = @DiscountRate, HouseType = @HouseType, Years = @Years,
+                        MinFloor = @MinFloor, MaxFloor = @MaxFloor, TotalFloor = @TotalFloor, Rooms = @Rooms, LivingRooms = @LivingRooms, 
+                        Bathrooms = @Bathrooms, HasBalcony = @HasBalcony,
+                        LandSpace = @LandSpace, MainSpace = @MainSpace, BuildingSpace = @BuildingSpace, ParkingSpace = @ParkingSpace,
+                        UpdatedUser = @UpdatedUser, UpdatedTime = @UpdatedTime
+                    WHERE HouseId = @HouseId";
+        using (var conn = new SqlConnection(_configuration.GetSection("ConnectionStrings")["MsSql"]))
+        {
+            await conn.ExecuteAsync(sql, house);
+        }
+    }
+
+    public async Task DeleteHouse(House house)
+    {
+        var sql = @"UPDATE Houses
+                    SET UpdatedUser = @UpdatedUser, UpdatedTime = @UpdatedTime,
+                        DeletedUser = @DeletedUser, DeletedTime = @DeletedTime
+                    WHERE HouseId = @HouseId";
+        using (var conn = new SqlConnection(_configuration.GetSection("ConnectionStrings")["MsSql"]))
+        {
+            await conn.ExecuteAsync(sql, house);
+        }
+    }
 }
 

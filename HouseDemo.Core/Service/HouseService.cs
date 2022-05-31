@@ -68,14 +68,39 @@ public class HouseService : IHouseService
         return result;
     }
 
-    public Task<HouseResult> UpdateHouse(Guid id, HouseRequest request)
+    public async Task<HouseResult> UpdateHouse(Guid id, HouseRequest request)
     {
-        throw new NotImplementedException();
+        if (request == null)
+            throw new ArgumentNullException(nameof(request));
+
+        var now = DateTime.UtcNow;
+
+        var house = Create<House>(request);
+        house.HouseId = id;
+        house.UpdatedUser = "Sys";
+        house.UpdatedTime = now;
+        await _houseRepository.UpdateHouse(house);
+
+        var result = Create<HouseResult>(request);
+        result.HouseId = house.HouseId;
+        result.UpdatedUser = house.UpdatedUser;
+        result.UpdatedTime = house.UpdatedTime;
+
+        return result;
     }
 
-    public Task DeleteHouse(Guid id)
+    public async Task DeleteHouse(Guid id)
     {
-        throw new NotImplementedException();
+        var now = DateTime.UtcNow;
+        var house = new House {
+           HouseId = id,
+            UpdatedUser = "Sys",
+            UpdatedTime = now,
+            DeletedUser = "Sys",
+            DeletedTime = now,
+         };
+
+        await _houseRepository.DeleteHouse(house);
     }
 
     private static T Create<T>(HouseBase request) where T : HouseBase, new()
