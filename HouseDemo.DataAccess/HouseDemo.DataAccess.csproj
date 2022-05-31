@@ -20,6 +20,7 @@
     <None Remove="Repositories\Interfaces\" />
     <None Remove="Dapper" />
     <None Remove="System.Data.SqlClient" />
+    <None Remove="Dapper.SqlBuilder" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -38,6 +39,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="Dapper.SqlBuilder" Version="2.0.78" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HouseDemo.Common\HouseDemo.Common.csproj" />

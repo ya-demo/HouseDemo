@@ -11,14 +11,36 @@ public class HouseService : IHouseService
     }
 
 
-    public Task<PageResult<HouseResult>> GetHouses(HouseQueryRequest request)
+    public async Task<PageResult<HouseResult>> GetHouses(HouseQueryRequest request)
     {
-        throw new NotImplementedException();
+        var houses = await _houseRepository.GetHouses(request);
+        var result = houses.Select(house =>
+        {
+            var tmpHouse = Create<HouseResult>(house);
+            tmpHouse.HouseId = house.HouseId;
+            tmpHouse.CreatedTime = house.CreatedTime;
+            tmpHouse.CreatedUser = house.CreatedUser;
+            tmpHouse.UpdatedTime = house.UpdatedTime;
+            tmpHouse.UpdatedUser = house.UpdatedUser;
+            return tmpHouse;
+        }).ToList();
+
+        return result.Pages(request.Rows, request.Page);
     }
 
-    public Task<HouseResult> GetHouse(Guid id)
+    public async Task<HouseResult> GetHouse(Guid id)
     {
-        throw new NotImplementedException();
+        var house = await _houseRepository.GetHouse(id);
+        if (house == null)
+            throw new Exception($"找不到 {id} 的資料");
+        var result = Create<HouseResult>(house);
+        result.HouseId = house.HouseId;
+        result.CreatedTime = house.CreatedTime;
+        result.CreatedUser = house.CreatedUser;
+        result.UpdatedTime = house.UpdatedTime;
+        result.UpdatedUser = house.UpdatedUser;
+
+        return result;
     }
 
     public async Task<HouseResult> AddHouse(HouseRequest request)
@@ -56,7 +78,7 @@ public class HouseService : IHouseService
         throw new NotImplementedException();
     }
 
-    private static T Create<T>(HouseRequest request) where T : HouseBase, new()
+    private static T Create<T>(HouseBase request) where T : HouseBase, new()
     {
         return new T
         {
